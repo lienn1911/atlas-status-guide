@@ -23,6 +23,8 @@ th, td { vertical-align: top; }
 .table-scroll { overflow-x: auto; }
 .table-scroll table { min-width: 650px; }
 .table-scroll tbody th { width: 25%; }
+.pending-cell, mark { background: #fff4cc; }
+.pending li:target { outline: 2px solid #c58b19; }
 </style>
 </head>
 <body>
@@ -42,9 +44,9 @@ th, td { vertical-align: top; }
 <thead><tr><th scope="col">Requirement</th><th scope="col">Essentials</th><th scope="col">Professional</th><th scope="col">Standalone AI Voice Agents</th></tr></thead>
 <tbody>
 <tr><th scope="row">Published UK base price</th><td>£75/month equivalent<br>3 seats × £25, billed annually</td><td>£120/month equivalent<br>3 seats × £40, billed annually</td><td>£76/month minimum</td></tr>
-<tr><th scope="row">CSV AI calling</th><td>Aircall Dashboard</td><td>Aircall Dashboard</td><td>Confirm CSV campaign access for this offer</td></tr>
-<tr><th scope="row">Direct SMS API</th><td>Through a supported integration</td><td>Direct access for our own tool</td><td>Confirm availability for this offer</td></tr>
-<tr><th scope="row">Included AI minutes</th><td>50 per month</td><td>50 per month</td><td>Allowance at the minimum price to be confirmed</td></tr>
+<tr><th scope="row">CSV AI calling</th><td>Aircall Dashboard</td><td>Aircall Dashboard</td><td class="pending-cell"><a href="#standalone-csv">Confirm CSV campaign access for this offer</a></td></tr>
+<tr><th scope="row">Direct SMS API</th><td>Through a supported integration</td><td>Direct access for our own tool</td><td class="pending-cell"><a href="#standalone-sms">Confirm availability for this offer</a></td></tr>
+<tr><th scope="row">Included AI minutes</th><td>50 per month</td><td>50 per month</td><td class="pending-cell"><a href="#standalone-minutes">Allowance at the minimum price to be confirmed</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -94,7 +96,7 @@ th, td { vertical-align: top; }
 <tr><th scope="row">What is the base subscription cost?</th><td>Annual billing equivalent for three seats: Essentials £75/month and Professional £120/month. <span class="sources"><a href="https://aircall.io/en-gb/pricing/">Source</a></span></td></tr>
 <tr><th scope="row">How many AI minutes are included?</th><td>50 minutes per month. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/28888299272733">Source</a></span></td></tr>
 <tr><th scope="row">What does each outbound attempt cost?</th><td>£0.011 per attempt, including unanswered calls and retries. AI minutes are billed separately. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/28888299272733">Source</a></span></td></tr>
-<tr><th scope="row">How is UK SMS billed?</th><td>Per billable segment. Rates depend on the contract and destination. Aircall reports inbound and outbound usage separately. <a href="https://support.aircall.io/en-gb/articles/26285326293149">SMS billing details</a> <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375395914781">Source</a></span></td></tr>
+<tr><th scope="row">How is UK SMS billed?</th><td>Per billable segment. Rates depend on the contract and destination. Aircall reports inbound and outbound usage separately. <mark>Confirm <a href="#sms-outbound">outbound rates</a>, <a href="#sms-inbound">reply charges</a> and <a href="#sms-two-way">two-way fees</a>.</mark> <a href="https://support.aircall.io/en-gb/articles/26285326293149">SMS billing details</a> <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375395914781">Source</a></span></td></tr>
 </tbody></table>
 <p>Monthly budget = subscription + billable AI minutes above the included allowance + outbound attempts × £0.011 + SMS segments × the quoted UK rate + applicable number and telephony charges.</p>
 <p>Use the applicable written quote for AI overage and UK SMS rates.</p>
@@ -128,8 +130,11 @@ th, td { vertical-align: top; }
 <li><label><input type="checkbox"> What happens to active and queued calls when we pause?</label></li>
 <li><label><input type="checkbox"> Which plan and add-ons cover our requirements?</label></li>
 <li><label><input type="checkbox"> What is the full UK price for seats, numbers and AI usage?</label></li>
+<li id="standalone-csv"><label><input type="checkbox"> Does Standalone AI Voice Agents support CSV campaigns?</label></li>
+<li id="standalone-sms"><label><input type="checkbox"> Does Standalone AI Voice Agents include direct SMS API access?</label></li>
+<li id="standalone-minutes"><label><input type="checkbox"> How many AI minutes are included in the £76 standalone minimum?</label></li>
 <li><label><input type="checkbox"> What does the £76 standalone minimum include?</label></li>
-<li><label><input type="checkbox"> What is the UK outbound SMS allowance and price per segment?</label></li><li><label><input type="checkbox"> Are inbound UK SMS replies charged?</label></li><li><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
+<li id="sms-outbound"><label><input type="checkbox"> What is the UK outbound SMS allowance and price per segment?</label></li><li id="sms-inbound"><label><input type="checkbox"> Are inbound UK SMS replies charged?</label></li><li id="sms-two-way"><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
 </ul>
 </div>
 </section>
