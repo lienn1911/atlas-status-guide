@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aircall Zoom Checklist</title>
+<style>
+body { margin: 0; background: #f2f5fa; color: #20364d; font: 16px/1.6 system-ui, sans-serif; }
+main { max-width: 940px; margin: auto; padding: 2rem 1rem; }
+section { background: white; border: 1px solid #d8e1ed; border-radius: 12px; padding: 1rem 1.5rem; margin-block: 1rem; }
+h1, h2, h3 { line-height: 1.25; }
+label { display: block; margin-block: .55rem; }
+a { color: #154f92; }
+</style>
+</head>
+<body>
+<main>
+<h1>Aircall Zoom Checklist</h1>
+<p>1–3 Aircall users · 11–25 employees · AI calls and automated SMS for UK deliveries</p>
+<section>
+<h2>1. AI outbound calls</h2>
+<h3>Confirmed by Aircall</h3>
+<p>Dashboard supports CSV import, script variable mapping, campaign launch and per-contact results. Admins and supervisors can pause campaigns. Call History exports call outcomes, phone numbers and Call IDs. <a href="https://support.aircall.io/en-gb/articles/39795382868765">AI campaigns</a> · <a href="https://support.aircall.io/en-gb/articles/36360413250973">Campaign controls</a> · <a href="https://support.aircall.io/en-gb/articles/10375354827293">Export fields</a></p>
+<h3>Ask or demo</h3>
+<label><input type="checkbox"> Demonstrate CSV import and mapping of order reference and delivery date, then launch with two internal contacts. What happens to queued and in-progress calls when paused?</label>
+<label><input type="checkbox"> Show how confirmed bookings, reschedule requests, no answer and voicemail appear.</label>
+<label><input type="checkbox"> Show a sample export. Can we match each outcome to the original order reference?</label>
+</section>
+<section>
+<h2>2. Automated UK SMS and API</h2>
+<h3>Confirmed by Aircall</h3>
+<p>Workspace supports manual one-to-one SMS. List-based automation uses an integration or the Messaging API. Direct API access requires Professional. UK SMS requires an eligible UK mobile number for domestic messaging. Native mode supports replies in Workspace. The API documents send, receive and status webhooks, a shared limit of 60 requests per minute, and separate number limits. <a href="https://developer.aircall.io/docs/sms">Messaging API</a> · <a href="https://support.aircall.io/en-gb/articles/10375395914781">UK SMS</a></p>
+<h3>Ask or demo</h3>
+<label><input type="checkbox"> Can one UK number handle AI outbound calls and two-way API SMS? Which number types and activation steps apply?</label>
+<label><input type="checkbox"> Show credential setup and the Native endpoint. Demonstrate an API send, delivery status and a reply in Workspace.</label>
+<label><input type="checkbox"> Can we attach an order reference? Which message or conversation IDs should we store?</label>
+<label><input type="checkbox"> Are idempotency keys supported? How do we check acceptance after a timeout, and what limits apply to our selected UK number?</label>
+</section>
+<section>
+<h2>3. Security and customer data</h2>
+<h3>Confirmed by Aircall</h3>
+<p>Aircall publishes a DPA and subprocessor information. It describes TLS 1.2 in transit, AES-256 at rest, regional hosting for certain data types, and zero data retention with its AI providers. <a href="https://aircall.io/security/">Security</a> · <a href="https://aircall.io/en-gb/dpa/">UK DPA</a> · <a href="https://aircall.io/regional-data-hosting/">Regional hosting</a> · <a href="https://aircall.io/privacy-faqs/">Privacy FAQs</a></p>
+<h3>Ask on Zoom</h3>
+<label><input type="checkbox"> Where are CSVs, contacts, SMS, recordings, transcripts and summaries stored and processed? Which subprocessors handle each?</label>
+<label><input type="checkbox"> Is customer data used for AI training or product improvement? What controls apply?</label>
+<label><input type="checkbox"> What are the retention periods and deletion rules for uploads, imported contacts, call data and backups?</label>
+<label><input type="checkbox"> Which plans include MFA, SSO, role-based access and audit logs? Can we restrict uploads, launches, exports, recording access and credential management?</label>
+<label><input type="checkbox"> Can recording, transcription and summaries be disabled separately? Can the agent identify itself as AI at the start of each call?</label>
+<label><input type="checkbox"> Can credentials be restricted and revoked? How do we authenticate webhooks, and how are incidents communicated?</label>
+</section>
+<section>
+<h2>4. Plan and UK pricing</h2>
+<h3>Published pricing</h3>
+<ul>
+<li>Essentials supports AI CSV campaigns. Annual pricing starts at £25 per seat per month, with a three-seat minimum (£75 per month equivalent).</li>
+<li>Professional supports direct Messaging API access. Annual pricing starts at £40 per seat per month, with a three-seat minimum (£120 per month equivalent).</li>
+<li>Aircall documents 50 included AI minutes per month and £0.011 per outbound attempt, including unanswered attempts and retries. Published AI overage figures differ, so use the applicable written rate.</li>
+<li>UK outbound SMS is charged per billable segment. The public pricing page directs customers to Aircall for rates.</li>
+</ul>
+<p><a href="https://aircall.io/en-gb/pricing/">UK plans</a> · <a href="https://support.aircall.io/en-gb/articles/28888299272733">AI billing</a> · <a href="https://support.aircall.io/en-gb/articles/10375395914781">SMS billing</a></p>
+<h3>Ask on Zoom</h3>
+<label><input type="checkbox"> Is Professional the lowest plan that covers direct SMS API access and the required security controls? Which add-ons are needed?</label>
+<label><input type="checkbox"> What are the minimum seats, monthly and annual prices, number fees, included AI minutes, applicable AI overage or bundle rates and outbound attempt fee?</label>
+<label><input type="checkbox"> What is the UK SMS price per segment, included allowance and overage rate? Are incoming replies or activation charged separately?</label>
+</section>
+</main>
+</body>
+</html>
