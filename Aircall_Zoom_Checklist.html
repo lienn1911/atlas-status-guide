@@ -25,6 +25,8 @@ th, td { vertical-align: top; }
 .table-scroll tbody th { width: 25%; }
 .pending-cell, mark { background: #fff4cc; }
 .pending li:target { outline: 2px solid #c58b19; }
+.question-group h3 { margin: 1rem 0 0; padding: .55rem .8rem; background: #20364d; color: #fff; }
+.question-group ul { margin: 0; padding: .35rem .8rem; }
 </style>
 </head>
 <body>
@@ -114,29 +116,54 @@ th, td { vertical-align: top; }
 <section>
 <div class="pending">
 <h2>To Be Confirmed on Zoom</h2>
+<div class="question-group">
+<h3>SMS</h3>
 <ul>
 <li><label><input type="checkbox"> Can our UK number handle AI calls and two-way API SMS?</label></li>
-<li><label><input type="checkbox"> Can you demo a CSV call and export its outcome with our order reference?</label></li>
 <li><label><input type="checkbox"> Can you demo API SMS, delivery status and a Workspace reply?</label></li>
+<li id="sms-outbound"><label><input type="checkbox"> What is the UK outbound SMS allowance and price per segment?</label></li>
+<li id="sms-inbound"><label><input type="checkbox"> Are inbound UK SMS replies charged?</label></li>
+<li id="sms-two-way"><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
+</ul>
+</div>
+<div class="question-group">
+<h3>AI Calls</h3>
+<ul>
+<li><label><input type="checkbox"> Can you demo a CSV call and export its outcome with our order reference?</label></li>
+<li><label><input type="checkbox"> What happens to active and queued calls when we pause?</label></li>
+</ul>
+</div>
+<div class="question-group">
+<h3>API Integration</h3>
+<ul>
 <li><label><input type="checkbox"> Can SMS events carry our order reference?</label></li>
 <li><label><input type="checkbox"> Can we safely retry a timed-out send without sending twice?</label></li>
 <li><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>
+<li><label><input type="checkbox"> Can API keys be restricted by number or permission?</label></li>
+</ul>
+</div>
+<div class="question-group">
+<h3>Security and Customer Data</h3>
+<ul>
 <li><label><input type="checkbox"> Where is our data stored, and who processes it?</label></li>
 <li><label><input type="checkbox"> Is our data used for AI training or product improvement?</label></li>
 <li><label><input type="checkbox"> When are uploads, recordings and backups deleted?</label></li>
 <li><label><input type="checkbox"> Which plans include MFA, SSO, roles and audit logs?</label></li>
 <li><label><input type="checkbox"> Can we disable recording, transcription and summaries separately?</label></li>
-<li><label><input type="checkbox"> Can API keys be restricted by number or permission?</label></li>
 <li><label><input type="checkbox"> How are we notified of a security incident?</label></li>
-<li><label><input type="checkbox"> What happens to active and queued calls when we pause?</label></li>
+</ul>
+</div>
+<div class="question-group">
+<h3>Plans and Pricing</h3>
+<ul>
 <li><label><input type="checkbox"> Which plan and add-ons cover our requirements?</label></li>
 <li><label><input type="checkbox"> What is the full UK price for seats, numbers and AI usage?</label></li>
 <li id="standalone-csv"><label><input type="checkbox"> Does Standalone AI Voice Agents support CSV campaigns?</label></li>
 <li id="standalone-sms"><label><input type="checkbox"> Does Standalone AI Voice Agents include direct SMS API access?</label></li>
 <li id="standalone-minutes"><label><input type="checkbox"> How many AI minutes are included in the £76 standalone minimum?</label></li>
 <li><label><input type="checkbox"> What does the £76 standalone minimum include?</label></li>
-<li id="sms-outbound"><label><input type="checkbox"> What is the UK outbound SMS allowance and price per segment?</label></li><li id="sms-inbound"><label><input type="checkbox"> Are inbound UK SMS replies charged?</label></li><li id="sms-two-way"><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
 </ul>
+</div>
 </div>
 </section>
 </main>
