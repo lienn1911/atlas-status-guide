@@ -568,7 +568,7 @@ tbody td.pending-rule { background: #fff1bf; }
 <h3>Confirmed Own van rules to implement</h3>
 <ul>
   <li><strong>Spreadsheet · Courier Issues, COMPLETED VAN DELIVERIES.</strong> Match the order number in column A. A matching delivery record marked yellow counts as Failed. A matching delivery record without a yellow failure marker counts as Delivered. This result takes priority over OptimoRoute.</li>
-  <li><strong>API · OptimoRoute.</strong> When Courier Issues has no matching result, use OptimoRoute <code>success</code> as the Delivered fallback. Show the source used for the final outcome in Atlas.</li>
+  <li><strong>API · OptimoRoute.</strong> Check the API status for every order alongside the Courier Issues lookup. If Courier Issues has no matching result and the API returns <code>success</code>, classify as Delivered. Show the source used for the final outcome in Atlas.</li>
   <li><strong>Spreadsheet · Routine Dashboard, Status.</strong> A fixed date or <code>DEL XX</code> counts as Scheduled. A yellow failure marker counts as Failed. If a failed delivery has been rebooked, show the order under both Failed and Scheduled.</li>
   <li><strong>Spreadsheet · Routine Dashboard, Status.</strong> <code>Surcharge</code> → Failed. <code>O/S</code> → Out of Stock. <code>Open</code> or <code>ASAP</code> → Unscheduled. <code>CaO</code> → Unknown until its meaning is confirmed.</li>
 </ul>
