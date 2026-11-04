@@ -52,6 +52,18 @@ th, td { vertical-align: top; }
 <p class="sources"><a href="https://aircall.io/en-gb/pricing/">UK pricing</a> · <a href="https://support.aircall.io/en-gb/articles/36360413250973">AI campaigns</a> · <a href="https://developer.aircall.io/docs/sms">Messaging API</a></p>
 </section>
 <section>
+<h2>Atlas Integration</h2>
+<p><strong>Yes. Atlas can integrate with Aircall through a custom backend connection.</strong> Aircall documents the API and webhook workflows. The Atlas connection has yet to be implemented and tested.</p>
+<table>
+<thead><tr><th scope="col">Workflow</th><th scope="col">How it connects to Atlas</th></tr></thead>
+<tbody>
+<tr><th scope="row">Automated SMS</th><td>Atlas can use an order's delivery phone number, date and tracking link to generate a personalised message. The backend sends it through Aircall's Messaging API. Professional supports direct API access, and Native mode lets staff handle replies in Workspace. <a href="https://developer.aircall.io/docs/sms">Messaging API</a></td></tr>
+<tr><th scope="row">AI outbound calls</th><td>Staff can export an Atlas delivery list as CSV and launch the campaign in Aircall Dashboard. Atlas could also create and launch campaigns through the Campaigns API using an AI agent configured in Aircall. <a href="https://support.aircall.io/en-gb/articles/39795382868765">Dashboard workflow</a> · <a href="https://developer.aircall.io/docs/place-your-first-call">Campaigns API</a></td></tr>
+<tr><th scope="row">Results in Atlas</th><td>Aircall webhooks can report call and SMS events to Atlas. Atlas would store Aircall IDs and link events back to the relevant order. The exact matching fields and whether CSV exports include the original order reference still need verification. <a href="https://developer.aircall.io/docs/webhooks-overview">Aircall webhooks</a></td></tr>
+</tbody>
+</table>
+</section>
+<section>
 <h2>Setup &amp; Usage Costs</h2>
 <h3>AI Calls</h3>
 <p>Excel → CSV → Aircall Dashboard → map script variables → launch campaign.</p>
