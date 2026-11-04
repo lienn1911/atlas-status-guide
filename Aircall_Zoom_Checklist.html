@@ -93,6 +93,18 @@ th, td { vertical-align: top; }
 <tr><th scope="row">Reliable updates</th><td>Backend setup</td><td>Receive webhooks over HTTPS, verify deliveries using Aircall's documented mechanism, and process duplicates safely. Keep the Aircall call or message ID with the Atlas order reference. <a href="https://developer.aircall.io/docs/setup-webhooks">Aircall webhook setup</a> · <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Webhook_Security_Cheat_Sheet.md">OWASP webhook guidance</a></td></tr></tbody>
 </table>
 
+<h3>API access, limits and charges</h3>
+<table>
+<thead><tr><th scope="col">Item</th><th scope="col">How it applies to Atlas</th></tr></thead>
+<tbody>
+<tr><th scope="row">Access and integration cost</th><td>Professional provides direct Messaging API access. The public documentation lists messaging usage charges. <mark><a href="#atlas-api-fees">Confirm any separate API, webhook or activation fee in our quote.</a></mark> Building and hosting the Atlas connection are separate from the Aircall subscription.</td></tr>
+<tr><th scope="row">Messaging API requests</th><td>60 requests per minute shared across Messaging API endpoints. This limits request speed.</td></tr>
+<tr><th scope="row">Messages per number</th><td>Aircall lists 500 per hour, 2,000 per day and 20,000 per month for its Other lines category. <mark><a href="#atlas-uk-limits">Confirm the limits for our selected UK number.</a></mark> These are sending limits.</td></tr>
+<tr><th scope="row">SMS billing</th><td>Billable outbound segments × the quoted UK rate, after any included allowance. For example, 100 two-segment texts use 200 segments. API and Workspace message usage share the same invoice. <mark><a href="#sms-outbound">UK rate and allowance</a></mark> · <mark><a href="#sms-inbound">Inbound reply charges</a></mark></td></tr>
+<tr><th scope="row">AI call billing</th><td>AI minutes and outbound attempts are billed separately under the applicable quote. <mark><a href="#campaign-api-plan">Confirm Campaigns API access before launching AI calls from Atlas.</a></mark></td></tr>
+</tbody>
+</table>
+<p class="sources"><a href="https://developer.aircall.io/docs/sms">Aircall API limits</a> · <a href="https://support.aircall.io/en-gb/articles/26285326293149">SMS billing</a> · <a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">GitHub rate-limit reference</a></p>
 <h3>Official Aircall API Documentation</h3>
 <ul>
 <li><a href="https://developer.aircall.io/docs/sms">Messaging API and sending modes</a></li>
@@ -169,7 +181,7 @@ th, td { vertical-align: top; }
 <ul><li id="campaign-api-plan"><label><input type="checkbox"> Which plan or entitlement lets Atlas launch AI campaigns through the API?</label></li>
 <li><label><input type="checkbox"> Can SMS events carry our order reference?</label></li>
 <li><label><input type="checkbox"> Can we safely retry a timed-out send without sending twice?</label></li>
-<li><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>
+<li id="atlas-uk-limits"><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>\n<li id="atlas-api-fees"><label><input type="checkbox"> Are there separate API, webhook or activation fees?</label></li>
 <li><label><input type="checkbox"> Can API keys be restricted by number or permission?</label></li>
 </ul>
 </div>
