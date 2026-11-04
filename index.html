@@ -105,6 +105,7 @@ tbody td.pending-rule { background: #fff1bf; }
     <tr>
       <th scope="row">Unscheduled<span class="status-definition">Delivery arrangements are still unconfirmed.</span></th>
       <td>
+<div class="rule-group"><p class="rule-source">Routine Dashboard sheet · Status</p><ul><li><mark>Open</mark></li><li><mark>ASAP</mark></li></ul></div>
         <div class="rule-group">
           <p class="rule-source">OptimoRoute API</p>
           <ul>
@@ -117,7 +118,8 @@ tbody td.pending-rule { background: #fff1bf; }
             <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
           </ul>
         </div>
-      </td>
+
+</td>
       <td>
         <div class="rule-group">
           <p class="rule-source">OW sheet · J (fallback)</p>
@@ -160,19 +162,16 @@ tbody td.pending-rule { background: #fff1bf; }
     <tr>
       <th scope="row">Scheduled<span class="status-definition">Delivery is being prepared, arranged or moved through the network.</span></th>
       <td>
-        <div class="rule-group">
-          <p class="rule-source">Routine Dashboard - Live · cell colour</p>
-          <ul>
-            <li>Routine Scheduled</li>
-          </ul>
-        </div>
+
+        <div class="rule-group"><p class="rule-source">Routine Dashboard sheet · Status</p><ul><li><mark>Fixed delivery date or DEL XX</mark></li><li><mark>A failed order with a new date also appears under Failed</mark></li></ul></div>
         <div class="rule-group">
           <p class="rule-source">OW sheet · J (fallback)</p>
           <ul>
             <li>P, S, SCHEDULED</li>
           </ul>
         </div>
-      </td>
+
+</td>
       <td>
         <div class="rule-group">
           <p class="rule-source">Palletways sheet · F (Tracking label)</p>
@@ -293,19 +292,8 @@ tbody td.pending-rule { background: #fff1bf; }
     <tr>
       <th scope="row">Delivered<span class="status-definition">Delivery is confirmed under the applicable platform rule.</span></th>
       <td>
-        <div class="rule-group">
-          <p class="rule-source">OptimoRoute API</p>
-          <ul>
-            <li>success</li>
-          </ul>
-        </div>
-        <div class="rule-group">
-          <p class="rule-source">OW sheet · J (fallback)</p>
-          <ul>
-            <li>C, DELIVERED, COMPLETE or COMPLETED</li>
-          </ul>
-        </div>
-      </td>
+<div class="rule-group"><p class="rule-source">Courier Issues sheet · COMPLETED VAN DELIVERIES</p><ul><li><mark>Column A matches and the record has no yellow failure marker</mark></li></ul></div><div class="rule-group"><p class="rule-source">OptimoRoute API</p><ul><li><mark>success when Courier Issues has no match</mark></li><li><mark>Check both sources and display the source used</mark></li></ul></div>
+</td>
       <td>
         <div class="rule-group">
           <p class="rule-source">Palletways sheet · F (Tracking label)</p>
@@ -342,12 +330,8 @@ tbody td.pending-rule { background: #fff1bf; }
     <tr>
       <th scope="row">Failed<span class="status-definition">Delivery was unsuccessful or flagged for follow-up.</span></th>
       <td>
-        <div class="rule-group">
-          <p class="rule-source">Routine Dashboard - Live · cell colour</p>
-          <ul>
-            <li>Routine Failed</li>
-          </ul>
-        </div>
+<div class="rule-group"><p class="rule-source">Courier Issues sheet · COMPLETED VAN DELIVERIES</p><ul><li><mark>Column A matches and the record has a yellow failure marker</mark></li></ul></div><div class="rule-group"><p class="rule-source">Routine Dashboard sheet · order colour and Status</p><ul><li><mark>Yellow failure marker or Surcharge</mark></li></ul></div>
+
         <div class="rule-group">
           <p class="rule-source">OptimoRoute API</p>
           <ul>
@@ -361,7 +345,8 @@ tbody td.pending-rule { background: #fff1bf; }
             <li>FAILED DELIVERY, FAILED, REJECTED</li>
           </ul>
         </div>
-      </td>
+
+</td>
       <td>
         <div class="rule-group">
           <p class="rule-source">Palletways API · events</p>
@@ -556,24 +541,18 @@ tbody td.pending-rule { background: #fff1bf; }
         </div>
       </td>
     </tr>
-  </tbody>
+  <tr><th scope="row">Out of Stock<span class="status-definition">Stock is unavailable.</span></th><td><div class="rule-group"><p class="rule-source">Routine Dashboard sheet · Status</p><ul><li><mark>O/S</mark></li></ul></div></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><th scope="row">Unknown<span class="status-definition">The status meaning is pending confirmation.</span></th><td><div class="rule-group"><p class="rule-source">Routine Dashboard sheet · Status</p><ul><li><mark>CaO</mark></li></ul></div></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+</tbody>
 </table></section><h2 class="platform-details-heading">Platform Statuses</h2><section id="optimoroute"><h2 class="platform-title"><img src="platform-logos/optimoroute.png" width="36" height="36" alt=""> OptimoRoute</h2>
 <h3>Source and decision order</h3>
 <ol class="source-steps">
-  <li><strong>Spreadsheet — Own van override.</strong> Look for the OW order number in Routine Dashboard - Live. A recognised colour override takes priority for Own van: white or amber gives Scheduled, and yellow gives Failed.</li>
-  <li><strong>API — OptimoRoute.</strong> If there is no override, match Sales Activity column E (Order reference) to a unique OptimoRoute API data.orderNo and read the provider status. For example, scheduled, on_route and servicing go to Out for Delivery. If no usable match or mapping is available, go to step 3.</li>
-  <li><strong>Spreadsheet — OrderWise fallback.</strong> Use Sales Activity column T (Delivery method) for method rules and column J (Status) for the order-status fallback. The yellow overview entries for rejected, cancelled and returned describe proposed changes.</li>
+<li><strong>Spreadsheet · Routine Dashboard.</strong> Read Status for the booking. A fixed date or DEL XX means Scheduled. The yellow failure marker can also place the order under Failed.</li>
+<li><strong>Spreadsheet · Courier Issues and API · OptimoRoute.</strong> Check both outcome sources. Use the matched Courier Issues result first. If there is no match, API success means Delivered.</li>
+<li><strong>Atlas rule.</strong> Display the source used for the final outcome. Apply the OW fallback rules listed below where applicable.</li>
 </ol>
 
-<h3>Confirmed Own van rules to implement</h3>
-<ul>
-  <li><strong>Spreadsheet · Courier Issues, COMPLETED VAN DELIVERIES.</strong> Match the order number in column A. A matching delivery record marked yellow counts as Failed. A matching delivery record without a yellow failure marker counts as Delivered. This result takes priority over OptimoRoute.</li>
-  <li><strong>API · OptimoRoute.</strong> Check the API status for every order alongside the Courier Issues lookup. If Courier Issues has no matching result and the API returns <code>success</code>, classify as Delivered. Show the source used for the final outcome in Atlas.</li>
-  <li><strong>Spreadsheet · Routine Dashboard, Status.</strong> A fixed date or <code>DEL XX</code> counts as Scheduled. A yellow failure marker counts as Failed. If a failed delivery has been rebooked, show the order under both Failed and Scheduled.</li>
-  <li><strong>Spreadsheet · Routine Dashboard, Status.</strong> <code>Surcharge</code> → Failed. <code>O/S</code> → Out of Stock. <code>Open</code> or <code>ASAP</code> → Unscheduled. <code>CaO</code> → Unknown until its meaning is confirmed.</li>
-</ul>
-<h3>Existing status rules</h3>
-<table><colgroup><col><col><col><col><col><col></colgroup><tbody><tr><th>Tracking status</th><th colspan="2">Meaning</th><th colspan="3">How Atlas decides</th></tr><tr><td>Unscheduled</td><td colspan="2">Delivery arrangements are still unconfirmed or there is insufficient information to confirm them.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first and use any active Scheduled or Failed override.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for unscheduled. A missing order alone is insufficient.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped.</li></ol></td></tr><tr><td>Unassigned</td><td colspan="2">The order is on hold and has no assigned delivery arrangement.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · OW Sales Activity T</strong> Check OW method T. ON HOLD - TBC gives Unassigned.</li></ol></td></tr><tr><td>Scheduled</td><td colspan="2">The delivery is being prepared, arranged or transported before the final delivery stage.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first. #FFFFFF with an order number or #FFC000 gives Scheduled.</li><li><strong class="decision-source">API · OptimoRoute</strong> Check OptimoRoute for a recognised status. If the result is unknown, continue to OW.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is P, S or SCHEDULED.</li></ol></td></tr><tr><td>Out for Delivery</td><td colspan="2">Atlas includes scheduled Own van orders, drivers en route and drivers servicing the stop.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first and use any active Scheduled or Failed override.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for scheduled, on_route or servicing.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is OUT FOR DELIVERY.</li></ol></td></tr><tr><td>Delivered</td><td colspan="2">Delivery is confirmed by carrier evidence or an eligible Own van fallback.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first and use any active Scheduled or Failed override.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for success.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is C, DELIVERED, COMPLETE or COMPLETED.</li></ol></td></tr><tr><td>Failed</td><td colspan="2">A delivery exception requires follow-up, such as an unsuccessful attempt or damage.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first. #FFFF00 gives Failed.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for failed.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is FAILED DELIVERY or FAILED.</li></ol></td></tr><tr><td>Rejected</td><td colspan="2">The recipient refused delivery or the driver rejected the order.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first and use any active Scheduled or Failed override.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for rejected.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is REJECTED.</li></ol></td></tr><tr><td>Cancelled</td><td colspan="2">The order or delivery has been cancelled.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · OW Sales Activity T</strong> Check OW method T. TO BE CANCELLED gives Cancelled.</li><li><strong class="decision-source">API · OptimoRoute</strong> OptimoRoute cancelled has no direct Atlas mapping.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is X.</li></ol></td></tr><tr><td>Return</td><td colspan="2">The shipment is being returned or has been returned to the sender.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Check the order-cell colour first and use any active Scheduled or Failed override.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for returned.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is RETURN.</li></ol></td></tr></tbody></table></section><section id="palletways"><h2 class="platform-title"><img src="platform-logos/palletways.png" width="36" height="36" alt=""> Palletways</h2>
+<table><colgroup><col><col><col><col><col><col></colgroup><tbody><tr><th>Tracking status</th><th colspan="2">Meaning</th><th colspan="3">How Atlas decides</th></tr><tr class="code-gap"><td>Unscheduled</td><td colspan="2">Delivery arrangements are still unconfirmed or there is insufficient information to confirm them.</td><td colspan="3"><ol><li><strong class="decision-source">Routine Dashboard sheet · Status</strong> Open or ASAP gives Unscheduled.</li><li><strong class="decision-source">OptimoRoute API</strong> An explicit unscheduled status gives Unscheduled when no applicable spreadsheet rule supplies the status.</li><li><strong class="decision-source">OW Sales Activity sheet · J</strong> Use the existing OW Unscheduled fallback when no applicable result is available.</li></ol></td></tr><tr><td>Unassigned</td><td colspan="2">The order is on hold and has no assigned delivery arrangement.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · OW Sales Activity T</strong> Check OW method T. ON HOLD - TBC gives Unassigned.</li></ol></td></tr><tr class="code-gap"><td>Scheduled</td><td colspan="2">The delivery is being prepared, arranged or transported before the final delivery stage.</td><td colspan="3"><ol><li><strong class="decision-source">Routine Dashboard sheet · Status</strong> A fixed delivery date or DEL XX gives Scheduled.</li><li><strong class="decision-source">Atlas rule</strong> If the previous attempt was marked Failed and the order is rebooked, include the order in both Scheduled and Failed.</li></ol></td></tr><tr><td>Out for Delivery</td><td colspan="2">Atlas includes scheduled Own van orders, drivers en route and drivers servicing the stop.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Apply the Routine Dashboard booking and failure rules above.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for scheduled, on_route or servicing.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is OUT FOR DELIVERY.</li></ol></td></tr><tr class="code-gap"><td>Delivered</td><td colspan="2">Delivery is confirmed by carrier evidence or an eligible Own van fallback.</td><td colspan="3"><ol><li><strong class="decision-source">Courier Issues sheet · COMPLETED VAN DELIVERIES</strong> Match the order number in column A. A matching record without a yellow failure marker gives Delivered.</li><li><strong class="decision-source">OptimoRoute API</strong> Check the API as well. If Courier Issues has no match, success gives Delivered.</li><li><strong class="decision-source">Atlas rule</strong> Display the source that determined the final result.</li></ol></td></tr><tr class="code-gap"><td>Failed</td><td colspan="2">A delivery exception requires follow-up, such as an unsuccessful attempt or damage.</td><td colspan="3"><ol><li><strong class="decision-source">Courier Issues sheet · COMPLETED VAN DELIVERIES</strong> A matching order in column A with a yellow failure marker gives Failed. The matched result takes priority over API success.</li><li><strong class="decision-source">Routine Dashboard sheet · order colour and Status</strong> A yellow failure marker or Surcharge gives Failed. A rebooked order can also appear under Scheduled.</li><li><strong class="decision-source">OptimoRoute API</strong> An API failed result gives Failed when no matched Courier Issues result determines the outcome.</li><li><strong class="decision-source">OW Sales Activity sheet · J</strong> Use FAILED DELIVERY or FAILED as the existing fallback when no applicable result is available.</li></ol></td></tr><tr><td>Rejected</td><td colspan="2">The recipient refused delivery or the driver rejected the order.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Apply the Routine Dashboard booking and failure rules above.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for rejected.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is REJECTED.</li></ol></td></tr><tr><td>Cancelled</td><td colspan="2">The order or delivery has been cancelled.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · OW Sales Activity T</strong> Check OW method T. TO BE CANCELLED gives Cancelled.</li><li><strong class="decision-source">API · OptimoRoute</strong> OptimoRoute cancelled has no direct Atlas mapping.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is X.</li></ol></td></tr><tr><td>Return</td><td colspan="2">The shipment is being returned or has been returned to the sender.</td><td colspan="3"><ol><li><strong class="decision-source">Spreadsheet · Routine Dashboard - Live</strong> Apply the Routine Dashboard booking and failure rules above.</li><li><strong class="decision-source">API · OptimoRoute</strong> Otherwise check OptimoRoute for returned.</li><li><strong class="decision-source">Spreadsheet · OW Sales Activity J</strong> If there is no applicable result, OW J is RETURN.</li></ol></td></tr><tr class="code-gap"><td>Out of Stock</td><td colspan="2">Stock is unavailable.</td><td colspan="3"><ol><li><strong class="decision-source">Routine Dashboard sheet · Status</strong> O/S gives Out of Stock.</li></ol></td></tr><tr class="code-gap"><td>Unknown</td><td colspan="2">The meaning of the source value is pending confirmation.</td><td colspan="3"><ol><li><strong class="decision-source">Routine Dashboard sheet · Status</strong> CaO gives Unknown.</li></ol></td></tr></tbody></table></section><section id="palletways"><h2 class="platform-title"><img src="platform-logos/palletways.png" width="36" height="36" alt=""> Palletways</h2>
 <h3>Source and decision order</h3>
 <ol class="source-steps">
   <li><strong>Spreadsheet — Tracking label and identifiers.</strong> Match Sales Activity A (Order no) to Palletways A (Customer Ref). Palletways B is Tracking ID, C is Consignment Number, F is the Tracking label, and Z/AA are booking fields. These sheet values are separate from the API delivery evidence.</li>
