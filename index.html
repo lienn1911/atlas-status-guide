@@ -22,8 +22,13 @@ tbody td.pending-rule { background: #fff1bf; }
 .platform-details-heading { margin: 3rem 0 1.25rem; padding-top: 1.5rem; border-top: 2px solid #bccadc; }
 .source-steps { padding-left: 1.4rem; max-width: 84ch; }
 .source-steps li + li { margin-top: .6rem; }
-.rule-source { display: block; margin: .15rem 0 .3rem; color: #465970; font-size: .82em; font-weight: 600; }
-#overview td div + div { margin-top: .45rem; }
+#overview caption { text-align: left; font-size: 1.15rem; font-weight: 700; padding: 0 0 .65rem; }
+#overview td, #overview th { padding: .7rem .75rem; }
+#overview .rule-group + .rule-group { margin-top: .65rem; padding-top: .55rem; border-top: 1px solid #dbe3ec; }
+#overview .rule-source { margin: 0 0 .22rem; color: #354d66; font-size: .82rem; font-weight: 700; }
+#overview .rule-group ul { padding-left: 1rem; }
+#overview .rule-group li + li { margin-top: .15rem; }
+#overview .rule-note { margin: .25rem 0 0; color: #465970; font-size: .8rem; }
 </style></head><body><main><h1>Atlas Status Guide</h1><nav aria-label="Platform details"><a href="#overview">All Methods</a><a href="#optimoroute">OptimoRoute</a><a href="#palletways">Palletways</a><a href="#amazon-shipping">Amazon Shipping</a><a href="#xdp">XDP</a><a href="#stopstart">StopStart</a></nav>
 <section id="read-the-rules" aria-labelledby="source-guide-title">
   <h2 id="source-guide-title">How Atlas chooses a status</h2>
@@ -34,7 +39,507 @@ tbody td.pending-rule { background: #fff1bf; }
   </ol>
   <p><mark>Yellow</mark> marks proposed application changes.</p>
 </section>
-<section><table id="overview"><thead><tr><th>All Methods</th><th>Own van</th><th>Palletways</th><th>Amazon Shipping</th><th>XDP</th><th>StopStart</th></tr></thead><tbody><tr><th scope="row">Awaiting<span class="status-definition">Waiting for a usable tracking update or confirmation.</span></th><td>—</td><td>—</td><td><ul><li><mark>AWAITING_CUSTOMER_PICKUP</mark><span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul></td><td><ul><li>No mapped progress event<span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li></ul></td><td><ul><li><mark>Past Expected Date — Unconfirmed</mark><span class="rule-source">Spreadsheet: STOPSTART I</span></li></ul></td></tr><tr><th scope="row">Unscheduled<span class="status-definition">Delivery arrangements are still unconfirmed.</span></th><td><ul><li>unscheduled<span class="rule-source">OptimoRoute API</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</div></td><td><ul><li>No tracking number<span class="rule-source">Spreadsheet: OW Sales Activity S (Tracking No)</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</div></td></tr><tr><th scope="row">Scheduled<span class="status-definition">Delivery is being prepared, arranged or moved through the network.</span></th><td><ul><li>Routine Scheduled<span class="rule-source">Spreadsheet: Routine Dashboard - Live (order-cell colour)</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>P, S, SCHEDULED</div></td><td><ul><li>IN COLLECTION DEPOT<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>AT COLLECTION DEPOT<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>AT THE HUB<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>TRUNKED TO HUB<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>DEPARTED HUB<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>AT DELIVERY DEPOT<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>P, S, SCHEDULED</div></td><td><ul><li>READY_FOR_RECEIVE<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li><li>IN_TRANSIT<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>P, S, SCHEDULED</div></td><td><ul><li><mark>DELIVERY + At Delivery Depot</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li><li><mark>DELIVERY + Scheduled for Delivery</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li></ul></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>P, S, SCHEDULED</div></td></tr><tr><th scope="row">Out for Delivery<span class="status-definition">In the final delivery queue. Includes planned Own van stops.</span></th><td><ul><li>scheduled<span class="rule-source">OptimoRoute API</span></li><li>on_route<span class="rule-source">OptimoRoute API</span></li><li>servicing<span class="rule-source">OptimoRoute API</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>OUT FOR DELIVERY</div></td><td><ul><li>OUT FOR DELIVERY<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li><li>ON DELIVERY VEHICLE<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>OUT FOR DELIVERY</div></td><td><ul><li>OUT_FOR_DELIVERY<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>OUT FOR DELIVERY</div></td><td><ul><li><mark>DELIVERY + Out for Delivery</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li><li><mark>NEXT STOP</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li></ul></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>OUT FOR DELIVERY</div></td></tr><tr><th scope="row">Delivered<span class="status-definition">Delivery is confirmed under the applicable platform rule.</span></th><td><ul><li>success<span class="rule-source">OptimoRoute API</span></li><li>C, DELIVERED, COMPLETE or COMPLETED<span class="rule-source">Spreadsheet: OW Sales Activity J (fallback)</span></li></ul></td><td><ul><li>JOB COMPLETE<span class="rule-source">Spreadsheet: Palletways F (Tracking label); Palletways API for classification</span></li></ul></td><td><ul><li>DELIVERED<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul></td><td><ul><li><mark>DELIVERED for all consignments</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li></ul></td><td><ul><li>Delivered<span class="rule-source">Spreadsheet: STOPSTART I</span></li></ul></td></tr><tr><th scope="row">Failed<span class="status-definition">Delivery was unsuccessful or flagged for follow-up.</span></th><td><ul><li>Routine Failed<span class="rule-source">Spreadsheet: Routine Dashboard - Live (order-cell colour)</span></li><li>failed<span class="rule-source">OptimoRoute API</span></li><li><mark>rejected</mark><span class="rule-source">OptimoRoute API</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>FAILED DELIVERY, FAILED, REJECTED</div></td><td><ul><li>Failed Delivery<span class="rule-source">Palletways API: consignment history / events</span></li><li><mark>Rejected</mark><span class="rule-source">Palletways API: consignment history / events</span></li><li><mark>Deleted</mark><span class="rule-source">Palletways API: consignment history / events</span></li><li>Lost<span class="rule-source">Palletways API: consignment history / events</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>FAILED DELIVERY, FAILED, REJECTED</div></td><td><ul><li><mark>DELIVERY_ATTEMPTED</mark><span class="rule-source">Spreadsheet: Amazon Shipping G</span></li><li><mark>REJECTED</mark><span class="rule-source">Spreadsheet: Amazon Shipping G</span></li><li>LOST<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li><li>UNDELIVERABLE<span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>FAILED DELIVERY, FAILED, REJECTED</div></td><td><ul><li>DAMAGE<span class="rule-source">Spreadsheet: XDP I (Latest Status)</span></li><li>DELETE<span class="rule-source">Spreadsheet: XDP I (Latest Status)</span></li><li>NOT RECEIVED<span class="rule-source">Spreadsheet: XDP I (Latest Status)</span></li><li><mark>EXCEPTION + Service Fail</mark><span class="rule-source">XDP scraper history via spreadsheet: XDP Activity M (event XML)</span></li></ul></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>FAILED DELIVERY, FAILED, REJECTED</div></td></tr><tr><th scope="row">Cancelled<span class="status-definition">The original delivery was cancelled or returned.</span></th><td><ul><li><mark>cancelled</mark><span class="rule-source">OptimoRoute API</span></li><li><mark>returned</mark><span class="rule-source">OptimoRoute API</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>X, RETURN</div><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>To Be Cancelled</div></td><td><ul><li><mark>Return</mark><span class="rule-source">Palletways API: consignment history / events</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>X, RETURN</div><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>To Be Cancelled</div></td><td><ul><li><mark>RETURNED_TO_SELLER</mark><span class="rule-source">Spreadsheet: Amazon Shipping G</span></li></ul><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>X, RETURN</div><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>To Be Cancelled</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>X, RETURN</div><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>To Be Cancelled</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity J (Status, fallback)</span>X, RETURN</div><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>To Be Cancelled</div></td></tr><tr><th scope="row">Unassigned<span class="status-definition">Delivery assignment is on hold.</span></th><td><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>On Hold - TBC</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>On Hold - TBC</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>On Hold - TBC</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>On Hold - TBC</div></td><td><div><span class="rule-source">Spreadsheet: OW Sales Activity T (Delivery method)</span>On Hold - TBC</div></td></tr></tbody></table></section><h2 class="platform-details-heading">Platform Statuses</h2><section id="optimoroute"><h2>OptimoRoute</h2>
+<section><table id="overview">
+  <caption>All Methods status mapping by source</caption>
+  <thead>
+    <tr>
+      <th scope="col">All Methods</th>
+      <th scope="col">Own van</th>
+      <th scope="col">Palletways</th>
+      <th scope="col">Amazon Shipping</th>
+      <th scope="col">XDP</th>
+      <th scope="col">StopStart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Awaiting<span class="status-definition">Waiting for a usable tracking update or confirmation.</span></th>
+      <td>—</td>
+      <td>—</td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li><mark>AWAITING_CUSTOMER_PICKUP</mark></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">XDP scraper · Activity sheet M</p>
+          <ul>
+            <li>No mapped progress event</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">StopStart sheet · I</p>
+          <ul>
+            <li><mark>Past Expected Date — Unconfirmed</mark></li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Unscheduled<span class="status-definition">Delivery arrangements are still unconfirmed.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OptimoRoute API</p>
+          <ul>
+            <li>unscheduled</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · S (tracking number)</p>
+          <ul>
+            <li>No tracking number</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>W, K, H, I, A, U, Y, UNSCHEDULED, blank or unmapped</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Scheduled<span class="status-definition">Delivery is being prepared, arranged or moved through the network.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Routine Dashboard - Live · cell colour</p>
+          <ul>
+            <li>Routine Scheduled</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>P, S, SCHEDULED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Palletways sheet · F (Tracking label)</p>
+          <ul>
+            <li>IN COLLECTION DEPOT</li>
+            <li>AT COLLECTION DEPOT</li>
+            <li>AT THE HUB</li>
+            <li>TRUNKED TO HUB</li>
+            <li>DEPARTED HUB</li>
+            <li>AT DELIVERY DEPOT</li>
+          </ul>
+          <p class="rule-note">Classification uses Palletways API events.</p>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>P, S, SCHEDULED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li>READY_FOR_RECEIVE</li>
+            <li>IN_TRANSIT</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>P, S, SCHEDULED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">XDP scraper · Activity sheet M</p>
+          <ul>
+            <li><mark>DELIVERY + At Delivery Depot</mark></li>
+            <li><mark>DELIVERY + Scheduled for Delivery</mark></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>P, S, SCHEDULED</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Out for Delivery<span class="status-definition">In the final delivery queue. Includes planned Own van stops.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OptimoRoute API</p>
+          <ul>
+            <li>scheduled</li>
+            <li>on_route</li>
+            <li>servicing</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>OUT FOR DELIVERY</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Palletways sheet · F (Tracking label)</p>
+          <ul>
+            <li>OUT FOR DELIVERY</li>
+            <li>ON DELIVERY VEHICLE</li>
+          </ul>
+          <p class="rule-note">Classification uses Palletways API events.</p>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>OUT FOR DELIVERY</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li>OUT_FOR_DELIVERY</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>OUT FOR DELIVERY</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">XDP scraper · Activity sheet M</p>
+          <ul>
+            <li><mark>DELIVERY + Out for Delivery</mark></li>
+            <li><mark>NEXT STOP</mark></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>OUT FOR DELIVERY</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Delivered<span class="status-definition">Delivery is confirmed under the applicable platform rule.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OptimoRoute API</p>
+          <ul>
+            <li>success</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>C, DELIVERED, COMPLETE or COMPLETED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Palletways sheet · F (Tracking label)</p>
+          <ul>
+            <li>JOB COMPLETE</li>
+          </ul>
+          <p class="rule-note">Classification uses Palletways API events.</p>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li>DELIVERED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">XDP scraper · Activity sheet M</p>
+          <ul>
+            <li><mark>DELIVERED for all consignments</mark></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">StopStart sheet · I</p>
+          <ul>
+            <li>Delivered</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Failed<span class="status-definition">Delivery was unsuccessful or flagged for follow-up.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Routine Dashboard - Live · cell colour</p>
+          <ul>
+            <li>Routine Failed</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OptimoRoute API</p>
+          <ul>
+            <li>failed</li>
+            <li><mark>rejected</mark></li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>FAILED DELIVERY, FAILED, REJECTED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Palletways API · events</p>
+          <ul>
+            <li>Failed Delivery</li>
+            <li><mark>Rejected</mark></li>
+            <li><mark>Deleted</mark></li>
+            <li>Lost</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>FAILED DELIVERY, FAILED, REJECTED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li><mark>DELIVERY_ATTEMPTED</mark></li>
+            <li><mark>REJECTED</mark></li>
+            <li>LOST</li>
+            <li>UNDELIVERABLE</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>FAILED DELIVERY, FAILED, REJECTED</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">XDP sheet · I</p>
+          <ul>
+            <li>DAMAGE</li>
+            <li>DELETE</li>
+            <li>NOT RECEIVED</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">XDP scraper · Activity sheet M</p>
+          <ul>
+            <li><mark>EXCEPTION + Service Fail</mark></li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>FAILED DELIVERY, FAILED, REJECTED</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Cancelled<span class="status-definition">The original delivery was cancelled or returned.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OptimoRoute API</p>
+          <ul>
+            <li><mark>cancelled</mark></li>
+            <li><mark>returned</mark></li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>X, RETURN</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>To Be Cancelled</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Palletways API · events</p>
+          <ul>
+            <li><mark>Return</mark></li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>X, RETURN</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>To Be Cancelled</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">Amazon Shipping sheet · G</p>
+          <ul>
+            <li><mark>RETURNED_TO_SELLER</mark></li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>X, RETURN</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>To Be Cancelled</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>X, RETURN</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>To Be Cancelled</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · J (fallback)</p>
+          <ul>
+            <li>X, RETURN</li>
+          </ul>
+        </div>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>To Be Cancelled</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Unassigned<span class="status-definition">Delivery assignment is on hold.</span></th>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>On Hold - TBC</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>On Hold - TBC</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>On Hold - TBC</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>On Hold - TBC</li>
+          </ul>
+        </div>
+      </td>
+      <td>
+        <div class="rule-group">
+          <p class="rule-source">OW sheet · T (delivery method)</p>
+          <ul>
+            <li>On Hold - TBC</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table></section><h2 class="platform-details-heading">Platform Statuses</h2><section id="optimoroute"><h2>OptimoRoute</h2>
 <h3>Source and decision order</h3>
 <ol class="source-steps">
   <li><strong>1 · Spreadsheet — Own van override.</strong> Look for the OW order number in Routine Dashboard - Live. A recognised colour override takes priority for Own van: white or amber gives Scheduled, and yellow gives Failed.</li>
