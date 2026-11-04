@@ -22,6 +22,24 @@ tbody td.pending-rule { background: #fff1bf; }
 .platform-details-heading { margin: 3rem 0 1.25rem; padding-top: 1.5rem; border-top: 2px solid #bccadc; }
 .source-steps { padding-left: 1.4rem; max-width: 84ch; }
 .source-steps li + li { margin-top: .6rem; }
+@media (min-width: 1000px) {
+  #read-the-rules .source-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: none;
+    padding: 0;
+    list-style-position: inside;
+  }
+  #read-the-rules .source-steps li {
+    margin: 0;
+    padding: .85rem 1rem;
+    border: 1px solid #dde4ed;
+    border-radius: 8px;
+    background: #f6f8fc;
+  }
+  #read-the-rules .source-steps strong { display: inline-block; }
+}
 #overview caption { text-align: left; font-size: 1.15rem; font-weight: 700; padding: 0 0 .65rem; }
 #overview td, #overview th { padding: .7rem .75rem; }
 #overview .rule-group + .rule-group { margin-top: .65rem; padding-top: .55rem; border-top: 1px solid #dbe3ec; }
