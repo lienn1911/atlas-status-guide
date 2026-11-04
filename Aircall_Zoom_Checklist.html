@@ -57,6 +57,27 @@ th, td { vertical-align: top; }
 <p class="sources"><a href="https://aircall.io/en-gb/pricing/">UK pricing</a> · <a href="https://support.aircall.io/en-gb/articles/36360413250973">AI campaigns</a> · <a href="https://developer.aircall.io/docs/sms">Messaging API</a></p>
 </section>
 <section>
+<h2>Excel or CSV Workflow</h2>
+<table>
+<thead><tr><th scope="col">Workflow</th><th scope="col">How it works</th></tr></thead>
+<tbody>
+<tr><th scope="row">AI outbound calls</th><td>Save the Excel list as CSV UTF-8. In Aircall Dashboard, import it into an AI Voice Agent campaign, map the phone number and script variables, then launch. Atlas is optional.</td></tr>
+<tr><th scope="row">Automated SMS</th><td>Use an automation tool or a custom backend to read the Excel or CSV rows and send each delivery text through Aircall. Aircall Workspace provides manual texting. A file-driven send uses an external workflow.</td></tr>
+</tbody>
+</table>
+<p>Example columns <code>phone_number, customer_name, order_ref, delivery_date, tracking_url</code>.</p>
+<p><a href="https://support.aircall.io/en-gb/articles/39795382868765">Aircall CSV import and variable mapping</a></p>
+</section>
+<section>
+<h2>Official Aircall API Documentation</h2>
+<ul>
+<li><a href="https://developer.aircall.io/docs/sms">Messaging API and sending modes</a></li>
+<li><a href="https://developer.aircall.io/docs/place-your-first-call">Campaigns API and AI outbound calling</a></li>
+<li><a href="https://developer.aircall.io/docs/authentication">API credentials and authentication</a></li>
+<li><a href="https://developer.aircall.io/docs/setup-webhooks">Webhook setup and delivery</a></li>
+</ul>
+</section>
+<section>
 <h2>Atlas Integration</h2>
 <p><strong>Yes. Atlas can integrate with Aircall through a custom backend connection.</strong> Aircall documents the API and webhook workflows. The Atlas connection has yet to be implemented and tested.</p>
 <table>
