@@ -60,7 +60,9 @@ th, td { vertical-align: top; }
 <tr><th scope="row">Automated SMS</th><td>Atlas can use an order's delivery phone number, date and tracking link to generate a personalised message. The backend sends it through Aircall's Messaging API. Professional supports direct API access, and Native mode lets staff handle replies in Workspace. <a href="https://developer.aircall.io/docs/sms">Messaging API</a></td></tr>
 <tr><th scope="row">AI outbound calls</th><td>Staff can export an Atlas delivery list as CSV and launch the campaign in Aircall Dashboard. Atlas could also create and launch campaigns through the Campaigns API using an AI agent configured in Aircall. <a href="https://support.aircall.io/en-gb/articles/39795382868765">Dashboard workflow</a> · <a href="https://developer.aircall.io/docs/place-your-first-call">Campaigns API</a></td></tr>
 <tr><th scope="row">Results in Atlas</th><td>Aircall webhooks can report call and SMS events to Atlas. Atlas would store Aircall IDs and link events back to the relevant order. The exact matching fields and whether CSV exports include the original order reference still need verification. <a href="https://developer.aircall.io/docs/webhooks-overview">Aircall webhooks</a></td></tr>
-</tbody>
+<tr><th scope="row">SMS mode</th><td>Use Native mode to keep SMS replies in Workspace. Proxy mode routes replies to an external callback and disables Workspace SMS on that number. <a href="https://developer.aircall.io/docs/sms">Aircall Messaging API</a></td></tr>
+<tr><th scope="row">Backend authentication</th><td>Aircall documents Basic Auth with an API ID and token, and OAuth for installed integrations. Keep credentials on the backend. <a href="https://developer.aircall.io/docs/authentication">Aircall authentication</a></td></tr>
+<tr><th scope="row">Reliable updates</th><td>Receive webhooks over HTTPS, verify deliveries using Aircall's documented mechanism, and process duplicates safely. Keep the Aircall call or message ID with the Atlas order reference. <a href="https://developer.aircall.io/docs/setup-webhooks">Aircall webhook setup</a> · <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Webhook_Security_Cheat_Sheet.md">OWASP webhook guidance</a></td></tr></tbody>
 </table>
 </section>
 <section>
@@ -110,23 +112,25 @@ th, td { vertical-align: top; }
 <div class="pending">
 <h2>To Be Confirmed on Zoom</h2>
 <ul>
-<li><label><input type="checkbox"> Demonstrate CSV import and mapping of order reference and delivery date, then launch with two internal contacts. What happens to queued and in-progress calls when paused?</label></li>
-<li><label><input type="checkbox"> Show how confirmed bookings, reschedule requests, no answer and voicemail appear.</label></li>
-<li><label><input type="checkbox"> Show a sample export. Can we match each outcome to the original order reference?</label></li>
-<li><label><input type="checkbox"> Can one UK number handle AI outbound calls and two-way API SMS? Which number types and activation steps apply?</label></li>
-<li><label><input type="checkbox"> Show credential setup and the Native endpoint. Demonstrate an API send, delivery status and a reply in Workspace.</label></li>
-<li><label><input type="checkbox"> Can we attach an order reference? Which message or conversation IDs should we store?</label></li>
-<li><label><input type="checkbox"> Are idempotency keys supported? How do we check acceptance after a timeout, and what limits apply to our selected UK number?</label></li>
-<li><label><input type="checkbox"> Where are CSVs, contacts, SMS, recordings, transcripts and summaries stored and processed? Which subprocessors handle each?</label></li>
-<li><label><input type="checkbox"> Is customer data used for AI training or product improvement? What controls apply?</label></li>
-<li><label><input type="checkbox"> What are the retention periods and deletion rules for uploads, imported contacts, call data and backups?</label></li>
-<li><label><input type="checkbox"> Which plans include MFA, SSO, role-based access and audit logs? Can we restrict uploads, launches, exports, recording access and credential management?</label></li>
-<li><label><input type="checkbox"> Can recording, transcription and summaries be disabled separately? Can the agent identify itself as AI at the start of each call?</label></li>
-<li><label><input type="checkbox"> Can credentials be restricted and revoked? How do we authenticate webhooks, and how are incidents communicated?</label></li>
-<li><label><input type="checkbox"> Is Professional the lowest plan that covers direct SMS API access and the required security controls? Which add-ons are needed?</label></li>
-<li><label><input type="checkbox"> What are the minimum seats, monthly and annual prices, number fees, included AI minutes, applicable AI overage or bundle rates and outbound attempt fee?</label></li>
-<li><label><input type="checkbox"> What is the UK SMS price per segment, included allowance and overage rate? Are incoming replies or activation charged separately?</label></li>
-<li><label><input type="checkbox"> What does the £76 standalone AI Voice Agents minimum include, and how does its total cost compare at the same usage?</label></li></ul>
+<li><label><input type="checkbox"> Can our UK number handle AI calls and two-way API SMS?</label></li>
+<li><label><input type="checkbox"> Can you demo a CSV call and export its outcome with our order reference?</label></li>
+<li><label><input type="checkbox"> Can you demo API SMS, delivery status and a Workspace reply?</label></li>
+<li><label><input type="checkbox"> Can SMS events carry our order reference?</label></li>
+<li><label><input type="checkbox"> Can we safely retry a timed-out send without sending twice?</label></li>
+<li><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>
+<li><label><input type="checkbox"> Where is our data stored, and who processes it?</label></li>
+<li><label><input type="checkbox"> Is our data used for AI training or product improvement?</label></li>
+<li><label><input type="checkbox"> When are uploads, recordings and backups deleted?</label></li>
+<li><label><input type="checkbox"> Which plans include MFA, SSO, roles and audit logs?</label></li>
+<li><label><input type="checkbox"> Can we disable recording, transcription and summaries separately?</label></li>
+<li><label><input type="checkbox"> Can API keys be restricted by number or permission?</label></li>
+<li><label><input type="checkbox"> How are we notified of a security incident?</label></li>
+<li><label><input type="checkbox"> What happens to active and queued calls when we pause?</label></li>
+<li><label><input type="checkbox"> Which plan and add-ons cover our requirements?</label></li>
+<li><label><input type="checkbox"> What is the full UK price for seats, numbers and AI usage?</label></li>
+<li><label><input type="checkbox"> What does the £76 standalone minimum include?</label></li>
+<li><label><input type="checkbox"> What is the UK SMS allowance and per-segment rate?</label></li>
+</ul>
 </div>
 </section>
 </main>
