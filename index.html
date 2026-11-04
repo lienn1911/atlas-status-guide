@@ -21,7 +21,7 @@ main td { overflow-wrap: break-word; }
 tbody td.pending-rule { background: #fff1bf; }
 .platform-details-heading { margin: 3rem 0 1.25rem; padding-top: 1.5rem; border-top: 2px solid #bccadc; }
 .source-steps { padding-left: 1.4rem; max-width: 84ch; }
-.source-steps li + li { margin-top: .6rem; }
+@media (width < 1000px) { .source-steps > li + li { margin-top: .6rem; } }
 @media (min-width: 1000px) {
   .source-steps {
     display: grid;
