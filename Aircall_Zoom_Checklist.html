@@ -72,14 +72,14 @@ th, td { vertical-align: top; }
 <h2>Atlas Integration</h2>
 <p><strong>Yes. Atlas can integrate with Aircall through a custom backend connection.</strong> Aircall documents the API and webhook workflows. The Atlas connection has yet to be implemented and tested.</p>
 <table>
-<thead><tr><th scope="col">Workflow</th><th scope="col">How it connects to Atlas</th></tr></thead>
+<thead><tr><th scope="col">Workflow</th><th scope="col">Aircall Plan</th><th scope="col">How it connects to Atlas</th></tr></thead>
 <tbody>
-<tr><th scope="row">Automated SMS</th><td>Atlas can use an order's delivery phone number, date and tracking link to generate a personalised message. The backend sends it through Aircall's Messaging API. Professional supports direct API access, and Native mode lets staff handle replies in Workspace. <a href="https://developer.aircall.io/docs/sms">Messaging API</a></td></tr>
-<tr><th scope="row">AI outbound calls</th><td>Staff can export an Atlas delivery list as CSV and launch the campaign in Aircall Dashboard. Atlas could also create and launch campaigns through the Campaigns API using an AI agent configured in Aircall. <a href="https://support.aircall.io/en-gb/articles/39795382868765">Dashboard workflow</a> · <a href="https://developer.aircall.io/docs/place-your-first-call">Campaigns API</a></td></tr>
-<tr><th scope="row">Results in Atlas</th><td>Aircall webhooks can report call and SMS events to Atlas. Atlas would store Aircall IDs and link events back to the relevant order. The exact matching fields and whether CSV exports include the original order reference still need verification. <a href="https://developer.aircall.io/docs/webhooks-overview">Aircall webhooks</a></td></tr>
-<tr><th scope="row">SMS mode</th><td>Use Native mode to keep SMS replies in Workspace. Proxy mode routes replies to an external callback and disables Workspace SMS on that number. <a href="https://developer.aircall.io/docs/sms">Aircall Messaging API</a></td></tr>
-<tr><th scope="row">Backend authentication</th><td>Aircall documents Basic Auth with an API ID and token, and OAuth for installed integrations. Keep credentials on the backend. <a href="https://developer.aircall.io/docs/authentication">Aircall authentication</a></td></tr>
-<tr><th scope="row">Reliable updates</th><td>Receive webhooks over HTTPS, verify deliveries using Aircall's documented mechanism, and process duplicates safely. Keep the Aircall call or message ID with the Atlas order reference. <a href="https://developer.aircall.io/docs/setup-webhooks">Aircall webhook setup</a> · <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Webhook_Security_Cheat_Sheet.md">OWASP webhook guidance</a></td></tr></tbody>
+<tr><th scope="row">Automated SMS</th><td><strong>Professional</strong> for direct Messaging API access.</td><td>Atlas can use an order's delivery phone number, date and tracking link to generate a personalised message. The backend sends it through Aircall's Messaging API. Professional supports direct API access, and Native mode lets staff handle replies in Workspace. <a href="https://developer.aircall.io/docs/sms">Messaging API</a></td></tr>
+<tr><th scope="row">AI outbound calls</th><td><strong>Essentials or Professional</strong> for CSV launch in Dashboard. <mark><a href="#campaign-api-plan">Confirm Campaigns API access for Atlas.</a></mark></td><td>Staff can export an Atlas delivery list as CSV and launch the campaign in Aircall Dashboard. Atlas could also create and launch campaigns through the Campaigns API using an AI agent configured in Aircall. <a href="https://support.aircall.io/en-gb/articles/39795382868765">Dashboard workflow</a> · <a href="https://developer.aircall.io/docs/place-your-first-call">Campaigns API</a></td></tr>
+<tr><th scope="row">Results in Atlas</th><td>Depends on the enabled call or SMS workflow.</td><td>Aircall webhooks can report call and SMS events to Atlas. Atlas would store Aircall IDs and link events back to the relevant order. The exact matching fields and whether CSV exports include the original order reference still need verification. <a href="https://developer.aircall.io/docs/webhooks-overview">Aircall webhooks</a></td></tr>
+<tr><th scope="row">SMS mode</th><td>Professional when Atlas sends directly via the Messaging API.</td><td>Use Native mode to keep SMS replies in Workspace. Proxy mode routes replies to an external callback and disables Workspace SMS on that number. <a href="https://developer.aircall.io/docs/sms">Aircall Messaging API</a></td></tr>
+<tr><th scope="row">Backend authentication</th><td>Depends on the API being used.</td><td>Aircall documents Basic Auth with an API ID and token, and OAuth for installed integrations. Keep credentials on the backend. <a href="https://developer.aircall.io/docs/authentication">Aircall authentication</a></td></tr>
+<tr><th scope="row">Reliable updates</th><td>Depends on the enabled webhook events.</td><td>Receive webhooks over HTTPS, verify deliveries using Aircall's documented mechanism, and process duplicates safely. Keep the Aircall call or message ID with the Atlas order reference. <a href="https://developer.aircall.io/docs/setup-webhooks">Aircall webhook setup</a> · <a href="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Webhook_Security_Cheat_Sheet.md">OWASP webhook guidance</a></td></tr></tbody>
 </table>
 
 <h3>Official Aircall API Documentation</h3>
@@ -155,7 +155,7 @@ th, td { vertical-align: top; }
 </div>
 <div class="question-group">
 <h3>API Integration</h3>
-<ul>
+<ul><li id="campaign-api-plan"><label><input type="checkbox"> Which plan or entitlement lets Atlas launch AI campaigns through the API?</label></li>
 <li><label><input type="checkbox"> Can SMS events carry our order reference?</label></li>
 <li><label><input type="checkbox"> Can we safely retry a timed-out send without sending twice?</label></li>
 <li><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>
