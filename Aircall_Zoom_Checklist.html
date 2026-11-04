@@ -14,7 +14,9 @@ a { color: #154f92; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: .55rem .8rem; text-align: left; border: 1px solid #d8e1ed; }
 th { background: #edf2f8; }
-.sources { font-size: .9rem; }
+.sources { font-size: .85rem; white-space: nowrap; }
+tbody th { width: 34%; background: #f5f8fc; }
+th, td { vertical-align: top; }
 .pending { background: #fff4cc; border-left: 4px solid #c58b19; padding: .75rem 1rem; margin-top: 1rem; }
 .pending h2 { margin: 0; }
 .pending ul { padding-left: 0; list-style: none; }
@@ -24,26 +26,23 @@ th { background: #edf2f8; }
 <main>
 <h1>Aircall Purchase Checklist</h1>
 <section>
-<table>
-<thead><tr><th scope="col">What we need to know before buying</th><th scope="col">Confirmed by Aircall</th></tr></thead>
-<tbody>
-<tr><th scope="row">AI calling and CSV</th><td><ul><li>Dashboard supports CSV import, script variable mapping, campaign launch and per-contact results.</li>
-<li>Admins and supervisors can pause campaigns.</li>
-<li>Call History exports call outcomes, phone numbers and Call IDs.</li></ul><p class="sources"><a href="https://support.aircall.io/en-gb/articles/39795382868765">AI campaigns</a> · <a href="https://support.aircall.io/en-gb/articles/36360413250973">Campaign controls</a> · <a href="https://support.aircall.io/en-gb/articles/10375354827293">Export fields</a></p></td></tr>
-<tr><th scope="row">Automated UK SMS and API</th><td><ul><li>Workspace supports manual one-to-one SMS.</li>
-<li>List-based automation uses an integration or the Messaging API.</li>
-<li>Direct API access requires Professional.</li>
-<li>UK SMS requires an eligible UK mobile number for domestic messaging.</li>
-<li>Native mode supports replies in Workspace.</li>
-<li>The API documents send, receive and status webhooks, a shared limit of 60 requests per minute, and separate number limits.</li></ul><p class="sources"><a href="https://developer.aircall.io/docs/sms">Messaging API</a> · <a href="https://support.aircall.io/en-gb/articles/10375395914781">UK SMS</a></p></td></tr>
-<tr><th scope="row">Security and customer data</th><td><ul><li>Aircall publishes a DPA and subprocessor information.</li>
-<li>It describes TLS 1.2 in transit, AES-256 at rest, regional hosting for certain data types, and zero data retention with its AI providers.</li></ul><p class="sources"><a href="https://aircall.io/security/">Security</a> · <a href="https://aircall.io/en-gb/dpa/">UK DPA</a> · <a href="https://aircall.io/regional-data-hosting/">Regional hosting</a> · <a href="https://aircall.io/privacy-faqs/">Privacy FAQs</a></p></td></tr>
-<tr><th scope="row">Plans and UK pricing</th><td><ul><li>Essentials supports AI CSV campaigns. Annual pricing starts at £25 per seat per month, with a three-seat minimum (£75 per month equivalent).</li>
-<li>Professional supports direct Messaging API access. Annual pricing starts at £40 per seat per month, with a three-seat minimum (£120 per month equivalent).</li>
-<li>Aircall documents 50 included AI minutes per month and £0.011 per outbound attempt, including unanswered attempts and retries. Published AI overage figures differ, so use the applicable written rate.</li>
-<li>UK outbound SMS is charged per billable segment. The public pricing page directs customers to Aircall for rates.</li></ul><p class="sources"><a href="https://aircall.io/en-gb/pricing/">UK plans</a> · <a href="https://support.aircall.io/en-gb/articles/28888299272733">AI billing</a> · <a href="https://support.aircall.io/en-gb/articles/10375395914781">SMS billing</a></p></td></tr>
-</tbody>
-</table>
+<table><thead><tr><th scope="col">Purchase question</th><th scope="col">Confirmed answer</th></tr></thead><tbody>
+<tr><th scope="row">Can we upload Excel for AI calling?</th><td>Yes. Export Excel as CSV, upload it in Aircall Dashboard and map columns to the AI script. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/39795382868765">Source</a></span></td></tr>
+<tr><th scope="row">Can we pause AI calls?</th><td>Admins and supervisors can pause campaigns. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/36360413250973">Source</a></span></td></tr>
+<tr><th scope="row">What can we export?</th><td>Call History exports outcomes, phone numbers and Call IDs. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375354827293">Source</a></span></td></tr>
+<tr><th scope="row">Can Workspace send SMS from a CSV?</th><td>Workspace offers manual one-to-one texting. List-based automation uses an integration or the Messaging API. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375395914781">Source</a></span></td></tr>
+<tr><th scope="row">Which plan lets us send SMS from our own tool?</th><td>Professional provides direct Messaging API access. <span class="sources"><a href="https://developer.aircall.io/docs/sms">Source</a></span></td></tr>
+<tr><th scope="row">Which UK number can send SMS?</th><td>An eligible UK mobile number can send domestic SMS. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375395914781">Source</a></span></td></tr>
+<tr><th scope="row">Can staff see replies in Workspace?</th><td>Native mode keeps replies in Workspace. Webhooks report sending, replies and status updates. <span class="sources"><a href="https://developer.aircall.io/docs/sms">Source</a></span></td></tr>
+<tr><th scope="row">What are the SMS API limits?</th><td>60 requests per minute across the Messaging API, plus separate limits per number. <span class="sources"><a href="https://developer.aircall.io/docs/sms">Source</a></span></td></tr>
+<tr><th scope="row">Is customer data encrypted?</th><td>Aircall states TLS 1.2 in transit and AES-256 at rest. <span class="sources"><a href="https://aircall.io/security/">Source</a></span></td></tr>
+<tr><th scope="row">Where is customer data hosted?</th><td>Regional hosting applies to certain data types. The UK DPA describes processing and subprocessors. <span class="sources"><a href="https://aircall.io/regional-data-hosting/">Source</a> · <a href="https://aircall.io/en-gb/dpa/">UK DPA</a></span></td></tr>
+<tr><th scope="row">What do AI providers retain?</th><td>Aircall states that it enforces zero data retention with its AI providers. <span class="sources"><a href="https://aircall.io/privacy-faqs/">Source</a></span></td></tr>
+<tr><th scope="row">What is the base subscription cost?</th><td>Annual billing equivalent for three seats: Essentials £75/month and Professional £120/month. <span class="sources"><a href="https://aircall.io/en-gb/pricing/">Source</a></span></td></tr>
+<tr><th scope="row">How many AI minutes are included?</th><td>50 minutes per month. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/28888299272733">Source</a></span></td></tr>
+<tr><th scope="row">What does each outbound attempt cost?</th><td>£0.011 per attempt, including unanswered calls and retries. AI minutes are billed separately. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/28888299272733">Source</a></span></td></tr>
+<tr><th scope="row">How is UK SMS billed?</th><td>Per billable segment. The UK rate is quoted separately. <span class="sources"><a href="https://support.aircall.io/en-gb/articles/10375395914781">Source</a></span></td></tr>
+</tbody></table>
 <div class="pending">
 <h2>To Be Confirmed</h2>
 <ul>
