@@ -35,7 +35,7 @@ th, td { vertical-align: top; }
 <section>
 <h2>What We Need</h2>
 <ol>
-<li><strong>Automated SMS.</strong> Send personalised UK delivery texts from a list. Confirm whether outbound notifications are enough or staff need to handle customer replies in Aircall Workspace.</li>
+<li><strong>Automated SMS.</strong> Send personalised UK delivery texts from a list. Include our company phone number in the first message so customers can contact us directly.</li>
 <li><strong>AI outbound calls.</strong> Launch calls from a delivery list using the correct order reference and delivery date.</li>
 </ol>
 </section>
@@ -68,6 +68,17 @@ th, td { vertical-align: top; }
 <p><a href="https://support.aircall.io/en-gb/articles/39795382868765">Aircall CSV import and variable mapping</a></p>
 </section>
 
+<section>
+<h2>How Customers Can Respond to SMS</h2>
+<table>
+<thead><tr><th scope="col">Option</th><th scope="col">Customer experience</th><th scope="col">Cost</th></tr></thead>
+<tbody>
+<tr><th scope="row">Company number in the message</th><td>Include our company number in the first delivery text. Customers can call it or send a separate text if that number supports SMS. Tapping Reply instead sends the message to the original sending number.</td><td>The Aircall notification is billed per outbound segment. <mark><a href="#sms-outbound">Confirm the UK rate and allowance.</a></mark></td></tr>
+<tr><th scope="row">Reply directly to the Aircall text</th><td>With Professional and an eligible UK mobile number, our tool can send via the Messaging API in Native mode so staff can see and answer replies in Workspace.</td><td>Staff replies sent through Aircall also count as outbound segments. <mark><a href="#sms-inbound">Confirm inbound reply charges</a> and <a href="#sms-two-way">any two-way fee or number cost</a>.</mark></td></tr>
+</tbody>
+</table>
+<p class="sources"><a href="https://developer.aircall.io/docs/sms">Messaging API</a> · <a href="https://support.aircall.io/en-gb/articles/10375395914781">UK SMS requirements</a> · <a href="https://support.aircall.io/en-gb/articles/26285326293149">SMS billing</a></p>
+</section>
 <section>
 <h2>Atlas Integration</h2>
 <p><strong>Yes. Atlas can integrate with Aircall through a custom backend connection.</strong> Aircall documents the API and webhook workflows. The Atlas connection has yet to be implemented and tested.</p>
