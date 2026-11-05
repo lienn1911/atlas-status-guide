@@ -159,54 +159,44 @@ th, td { vertical-align: top; }
 <section>
 <div class="pending">
 <h2>To Be Confirmed on Zoom</h2>
+<p>We currently use Essentials. We prefer to keep it and upgrade to Professional only if a required feature needs it.</p>
+<p>For the 30-minute meeting, focus on the six questions below. Please send the detailed follow-up answers and itemised quote by email.</p>
 <div class="question-group">
-<h3>SMS</h3>
+<h3>Meeting priorities</h3>
 <ul>
-<li><label><input type="checkbox"> Can our UK number handle AI calls and two-way API SMS?</label></li>
-<li><label><input type="checkbox"> Can you demo API SMS, delivery status and a Workspace reply?</label></li>
-<li id="sms-outbound"><label><input type="checkbox"> What is the UK outbound SMS allowance and price per segment?</label></li>
+<li id="sms-two-way"><label><input type="checkbox"> Can Essentials support two-way API SMS and AI calls on our UK number? Which required features need Professional or an add-on?</label></li>
+<li><label><input type="checkbox"> Can you demo a CSV AI call, export its outcome with our order reference, then send an API SMS and show a customer reply in Workspace?</label></li>
+<li id="campaign-api-plan"><label><input type="checkbox"> Can Atlas launch AI campaigns through the API on Essentials? If extra access is needed, what is the minimum plan or add-on?</label></li>
+<li><label><input type="checkbox"> Can SMS events include our order reference, and how can Atlas retry a timed-out send without sending twice?</label></li>
+<li id="atlas-uk-limits"><label><input type="checkbox"> What happens to active and queued calls when we pause, and which UK call and SMS sending limits apply?</label></li>
+<li><label><input type="checkbox"> Please compare the total cost of Essentials with the required add-ons against Professional with the required add-ons.</label></li>
+</ul>
+</div>
+<details class="question-group">
+<summary>Written follow-up · Pricing and API access</summary>
+<ul>
+<li id="sms-outbound"><label><input type="checkbox"> What UK outbound SMS allowance applies to Essentials, and what is the price per segment?</label></li>
 <li id="sms-inbound"><label><input type="checkbox"> Are inbound UK SMS replies charged?</label></li>
-<li id="sms-two-way"><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
+<li><label><input type="checkbox"> Does two-way SMS require an extra fee, add-on or number?</label></li>
+<li id="atlas-api-fees"><label><input type="checkbox"> Are there separate API, webhook or activation fees?</label></li>
+<li><label><input type="checkbox"> Can API keys be restricted by number or permission on Essentials?</label></li>
+<li><label><input type="checkbox"> Please itemise UK seats, numbers, SMS, AI minutes, outbound attempts, add-ons and any minimum commitments for each quoted option.</label></li>
+<li id="standalone-csv"><label><input type="checkbox"> If Standalone AI Voice Agents is relevant to our requirements, does it support CSV campaigns?</label></li>
+<li id="standalone-sms"><label><input type="checkbox"> If Standalone AI Voice Agents is relevant, does it include direct SMS API access?</label></li>
+<li id="standalone-minutes"><label><input type="checkbox"> If you quote the £76 standalone minimum, what does it include and how many AI minutes are included?</label></li>
 </ul>
-</div>
-<div class="question-group">
-<h3>AI Calls</h3>
-<ul>
-<li><label><input type="checkbox"> Can you demo a CSV call and export its outcome with our order reference?</label></li>
-<li><label><input type="checkbox"> What happens to active and queued calls when we pause?</label></li>
-</ul>
-</div>
-<div class="question-group">
-<h3>API Integration</h3>
-<ul><li id="campaign-api-plan"><label><input type="checkbox"> Which plan or entitlement lets Atlas launch AI campaigns through the API?</label></li>
-<li><label><input type="checkbox"> Can SMS events carry our order reference?</label></li>
-<li><label><input type="checkbox"> Can we safely retry a timed-out send without sending twice?</label></li>
-<li id="atlas-uk-limits"><label><input type="checkbox"> Which sending limits apply to our UK number?</label></li>\n<li id="atlas-api-fees"><label><input type="checkbox"> Are there separate API, webhook or activation fees?</label></li>
-<li><label><input type="checkbox"> Can API keys be restricted by number or permission?</label></li>
-</ul>
-</div>
-<div class="question-group">
-<h3>Security and Customer Data</h3>
+</details>
+<details class="question-group">
+<summary>Written follow-up · Security and customer data</summary>
 <ul>
 <li><label><input type="checkbox"> Where is our data stored, and who processes it?</label></li>
 <li><label><input type="checkbox"> Is our data used for AI training or product improvement?</label></li>
 <li><label><input type="checkbox"> When are uploads, recordings and backups deleted?</label></li>
-<li><label><input type="checkbox"> Which plans include MFA, SSO, roles and audit logs?</label></li>
+<li><label><input type="checkbox"> Which MFA, SSO, role and audit-log controls are included in Essentials, and which need an upgrade?</label></li>
 <li><label><input type="checkbox"> Can we disable recording, transcription and summaries separately?</label></li>
 <li><label><input type="checkbox"> How are we notified of a security incident?</label></li>
 </ul>
-</div>
-<div class="question-group">
-<h3>Plans and Pricing</h3>
-<ul>
-<li><label><input type="checkbox"> Which plan and add-ons cover our requirements?</label></li>
-<li><label><input type="checkbox"> What is the full UK price for seats, numbers and AI usage?</label></li>
-<li id="standalone-csv"><label><input type="checkbox"> Does Standalone AI Voice Agents support CSV campaigns?</label></li>
-<li id="standalone-sms"><label><input type="checkbox"> Does Standalone AI Voice Agents include direct SMS API access?</label></li>
-<li id="standalone-minutes"><label><input type="checkbox"> How many AI minutes are included in the £76 standalone minimum?</label></li>
-<li><label><input type="checkbox"> What does the £76 standalone minimum include?</label></li>
-</ul>
-</div>
+</details>
 </div>
 </section>
 </main>
